@@ -1,0 +1,22 @@
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    checkMissingIterableValueType: true
+    checkGenericClassInNonGenericObjectType: true
+    checkUninitializedProperties: true
+    checkImplicitMixed: true
+    parallel:
+        maximumNumberOfProcesses: 4
+    reportUnmatchedIgnoredErrors: true
+
+    scanFiles:
+        - stubs/PHPUnit.stub.php
+
+    bootstrapFiles:
+        - vendor/autoload.php
