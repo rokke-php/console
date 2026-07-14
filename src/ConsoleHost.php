@@ -7,7 +7,6 @@ namespace Rokke\Console;
 use Rokke\Console\Build\CommandRegistry;
 use Rokke\Runtime\Compiled\CompiledRuntime;
 use Rokke\Runtime\Engine\ExecutionEngine;
-use Rokke\Runtime\Engine\Invoker;
 use RuntimeException;
 
 /**
@@ -34,7 +33,7 @@ final class ConsoleHost
     public function __construct(CompiledRuntime $runtime)
     {
         $this->registry       = $runtime->artifacts->get(CommandRegistry::class) ?? CommandRegistry::empty();
-        $this->engine         = new ExecutionEngine(new Invoker($runtime), runtime: $runtime);
+        $this->engine         = new ExecutionEngine($runtime);
         $this->contextFactory = new ConsoleContextFactory();
     }
 

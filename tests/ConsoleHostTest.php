@@ -6,12 +6,12 @@ namespace Rokke\Console\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Rokke\Console\ConsoleKernel;
-use Rokke\Console\ConsoleModule;
+use Rokke\Console\ConsoleExtension;
 use RuntimeException;
 
 /**
  * Integration tests for the full Console pipeline:
- *   ConsoleModule → ConsoleKernel::build() → ConsoleHost::handle()
+ *   ConsoleExtension → ConsoleKernel::build() → ConsoleHost::handle()
  *
  * Uses the fixture commands in tests/Discovery/Fixture/.
  */
@@ -20,7 +20,7 @@ final class ConsoleHostTest extends TestCase
     private function kernel(): ConsoleKernel
     {
         return (new ConsoleKernel())
-            ->register(new ConsoleModule(
+            ->register(new ConsoleExtension(
                 directory: __DIR__ . '/Discovery/Fixture',
                 namespace: 'Rokke\\Console\\Tests\\Discovery\\Fixture',
             ))
