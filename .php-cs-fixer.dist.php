@@ -7,7 +7,7 @@ $finder = PhpCsFixer\Finder::create()
 return (new PhpCsFixer\Config())
     ->setRules([
         '@PSR12'          => true,
-        '@PHP84Migration' => true,
+        '@PHP8x4Migration' => true,
         // PHPStan 1.12 cannot parse `new Foo()->method()` without parens
         'new_expression_parentheses' => ['use_parentheses' => true],
     ])
