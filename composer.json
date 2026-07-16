@@ -20,11 +20,11 @@
 		"issues": "https://github.com/rokke-php/console/issues",
 		"source": "https://github.com/rokke-php/console"
 	},
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"require": {
 		"php": ">=8.4",
 		"rokke/contracts": "^0.7.0",
-		"rokke/runtime": "^0.18.0"
+		"rokke/runtime": "^0.19.0"
 	},
 	"require-dev": {
 		"friendsofphp/php-cs-fixer": "^3.64",

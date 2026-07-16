@@ -47,18 +47,17 @@ final class ConsoleDirectoryDiscoveryProvider implements DiscoveryProviderInterf
                 continue;
             }
 
-            $attr        = $attrs[0]->newInstance();
-            $operationId = $this->operationId($class);
-            $instance    = new $class();
-
-            if (!is_callable($instance)) {
+            if (!$reflection->hasMethod('__invoke') || !$reflection->getMethod('__invoke')->isPublic()) {
                 throw new \InvalidArgumentException(
-                    "Command handler {$class} does not declare an __invoke method.",
+                    "Command handler {$class} does not declare a public __invoke() method.",
                 );
             }
 
+            $attr        = $attrs[0]->newInstance();
+            $operationId = $this->operationId($class);
+
             $capabilities[] = new ConsoleCapability($attr->name, $operationId);
-            $capabilities[] = new OperationCapability($operationId, $operationId, $instance);
+            $capabilities[] = new OperationCapability($operationId, $operationId, $class);
         }
 
         return $capabilities;

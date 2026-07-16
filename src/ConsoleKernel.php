@@ -14,6 +14,7 @@ use Rokke\Runtime\Build\ArgumentPlanCompiler;
 use Rokke\Runtime\Build\DiscoveryEngine;
 use Rokke\Runtime\Build\FactoryCompiler;
 use Rokke\Runtime\Build\FactoryRepository;
+use Rokke\Runtime\Build\HandlerCompiler;
 use Rokke\Runtime\Build\MaxValidationSourceCompiler;
 use Rokke\Runtime\Build\MinValidationSourceCompiler;
 use Rokke\Runtime\Build\ModelBuilder;
@@ -84,6 +85,7 @@ final class ConsoleKernel
         $registry         = $registryCompiler->compile($model->definitions(CommandDescriptor::class));
 
         $factories          = FactoryRepository::build($model->definitions(ServiceDescriptor::class), new FactoryCompiler());
+        $handlerCompiler    = new HandlerCompiler();
         $argCompiler        = new ArgumentPlanCompiler([new OptionArgumentSourceCompiler()]);
         $resultCompiler     = new ResultPlanCompiler([]);
         $validationCompiler = new ValidationPlanCompiler([
@@ -99,7 +101,7 @@ final class ConsoleKernel
         $compiledOps     = [];
 
         foreach ($model->definitions(OperationDefinition::class) as $index => $definition) {
-            $handlers[$index]        = $definition->handler;
+            $handlers[$index]        = $handlerCompiler->compile($definition->handler, $factories);
             $argumentPlans[$index]   = $argCompiler->compile($definition->handler, $factories);
             $resultPlans[$index]     = $resultCompiler->compile($definition->handler);
             $validationPlans[$index] = $validationCompiler->compile($definition->handler);
