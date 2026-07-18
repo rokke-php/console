@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9c70577c54d4a194a7fe9144cba6a15",
+    "content-hash": "b88e746e5d8498244ae1b2a39fdf896c",
     "packages": [
         {
             "name": "psr/container",
@@ -113,16 +113,16 @@
         },
         {
             "name": "rokke/runtime",
-            "version": "0.19.0",
+            "version": "0.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rokke-php/runtime.git",
-                "reference": "0b8ed7b499ede0042605d58e72baf62da01dc9da"
+                "reference": "f71ab4f644bdc1aa6fc0bf6b7d1510a1428562f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rokke-php/runtime/zipball/0b8ed7b499ede0042605d58e72baf62da01dc9da",
-                "reference": "0b8ed7b499ede0042605d58e72baf62da01dc9da",
+                "url": "https://api.github.com/repos/rokke-php/runtime/zipball/f71ab4f644bdc1aa6fc0bf6b7d1510a1428562f9",
+                "reference": "f71ab4f644bdc1aa6fc0bf6b7d1510a1428562f9",
                 "shasum": ""
             },
             "require": {
@@ -173,7 +173,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-16T03:12:30+00:00"
+            "time": "2026-07-18T15:17:13+00:00"
         }
     ],
     "packages-dev": [
